@@ -66,6 +66,17 @@ class CreateShortUrlView(generics.ListCreateAPIView):
         context['request'] = self.request
         return context
     
+    def list(self, request, *args, **kwargs):
+        queryset = self.get_queryset()
+        serializer = self.get_serializer(queryset, many=True)
+        
+        return Response({
+            'success': True,
+            'total_urls': queryset.count(),
+            'total_clicks': sum(url.clicks for url in queryset),
+            'urls': serializer.data
+        })
+    
     def perform_create(self,serializer):
         serializer.save(user=self.request.user)
     
