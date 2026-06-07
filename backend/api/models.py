@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class URL(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="user_url")
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="urls")
     
     long_url = models.URLField(max_length=1000)
     short_code = models.CharField(max_length=20, unique=True, db_index=True)

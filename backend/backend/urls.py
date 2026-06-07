@@ -19,9 +19,12 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
+from api.views import PublicRedirectView
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('user/login/',TokenObtainPairView.as_view(), name="login"),
     path('user/token/refresh/',TokenRefreshView.as_view(), name="refresh-token"),
     path('user/', include("api.urls")),
+    path('<str:short_code>/',PublicRedirectView.as_view(), name="redirect" ),
 ]

@@ -15,11 +15,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.urls import path
-from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
-from .views import RegistrationView
+from .views import RegistrationView, CreateShortUrlView, RetrieveDestroyUpdateView, ListShortUrlsView
 
 urlpatterns = [
     path('register/', RegistrationView.as_view(), name="register"),
+    path('url/', CreateShortUrlView.as_view(), name="create url"),
+    path('urls/', ListShortUrlsView.as_view(), name="list urls"),
+    path('url/<str:short_code>/', RetrieveDestroyUpdateView.as_view(), name="view, update or delete url"),
 
-    
 ]
