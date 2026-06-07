@@ -6,7 +6,6 @@ A full-stack URL shortening application with Django backend and Next.js frontend
 
 - User registration and login (JWT authentication)
 - Create short URLs from long URLs
-- Custom alias support (e.g., `yourdomain.com/my-link`)
 - Edit and delete URLs
 - Click tracking for each short URL
 - View all your URLs in one dashboard
